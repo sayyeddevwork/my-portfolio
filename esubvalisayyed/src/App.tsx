@@ -1,12 +1,25 @@
-import "./App.css";
-import LandingPage from "./layouts/LandingPage";
+import NavBar from "./components/navigation";
 
 function App() {
   return (
     <>
-      <LandingPage />
+      <NavBar />
 
-      <div className="ticks"></div>
+      <main>
+        <section id="home"></section>
+
+        <section id="about"></section>
+
+        <section id="skills"></section>
+
+        <section id="projects"></section>
+
+        <section id="experience"></section>
+
+        <section id="education"></section>
+
+        <section id="contact"></section>
+      </main>
     </>
   );
 }

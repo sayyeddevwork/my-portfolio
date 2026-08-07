@@ -1,14 +1,14 @@
-export interface NavItemType {
+export interface NavItem {
   id: string;
   label: string;
   href: string;
 }
 
-export const navItems: NavItemType[] = [
+export const navItems: NavItem[] = [
   {
-    id: "projects",
-    label: "Projects",
-    href: "#projects",
+    id: "home",
+    label: "Home",
+    href: "#home",
   },
   {
     id: "about",
@@ -16,14 +16,19 @@ export const navItems: NavItemType[] = [
     href: "#about",
   },
   {
-    id: "tech",
-    label: "Tech",
-    href: "#tech",
+    id: "skills",
+    label: "Skills",
+    href: "#skills",
   },
   {
-    id: "services",
-    label: "Services",
-    href: "#services",
+    id: "projects",
+    label: "Projects",
+    href: "#projects",
+  },
+  {
+    id: "experience",
+    label: "Experience",
+    href: "#experience",
   },
   {
     id: "education",
@@ -31,13 +36,8 @@ export const navItems: NavItemType[] = [
     href: "#education",
   },
   {
-    id: "testimonials",
-    label: "Testimonials",
-    href: "#testimonials",
-  },
-  {
     id: "contact",
-    label: "Get In Touch",
+    label: "Contact",
     href: "#contact",
   },
 ];
