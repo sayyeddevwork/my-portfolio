@@ -1,8 +1,11 @@
+import Background from "./components/background";
 import NavBar from "./components/navigation";
 
 function App() {
   return (
     <>
+      <Background />
+
       <NavBar />
 
       <main>
