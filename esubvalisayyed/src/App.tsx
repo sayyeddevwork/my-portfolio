@@ -1,4 +1,5 @@
 import Background from "./components/background";
+import Hero from "./components/hero";
 import NavBar from "./components/navigation";
 
 function App() {
@@ -9,19 +10,7 @@ function App() {
       <NavBar />
 
       <main>
-        <section id="home"></section>
-
-        <section id="about"></section>
-
-        <section id="skills"></section>
-
-        <section id="projects"></section>
-
-        <section id="experience"></section>
-
-        <section id="education"></section>
-
-        <section id="contact"></section>
+        <Hero />
       </main>
     </>
   );

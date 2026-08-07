@@ -1,0 +1,118 @@
+Hero.css
+/* Hero.css starter */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: calc(var(--navbar-height)+2rem);
+  padding-bottom: 3rem;
+}
+.hero__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  min-height: calc(100vh - var(--navbar-height));
+}
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 640px;
+}
+.hero__greeting {
+  display: inline-flex;
+  width: max-content;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-primary);
+}
+.hero__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.05;
+}
+.hero__heading-highlight {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero__buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+}
+.hero__button--primary {
+  background: var(--gradient-primary);
+  color: var(--color-background);
+}
+.hero__button--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+}
+.hero__image-wrapper {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero__image-glow {
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 209, 255, 0.35),
+    transparent 70%
+  );
+  filter: blur(60px);
+}
+.hero__image-card {
+  width: 380px;
+  height: 460px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 992px) {
+  .hero__container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .hero__image-card {
+    width: 300px;
+    height: 380px;
+  }
+}
+@media (max-width: 576px) {
+  .hero__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero__button {
+    width: 100%;
+  }
+}
