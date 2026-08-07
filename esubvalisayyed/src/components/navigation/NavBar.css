@@ -1,0 +1,235 @@
+/* ===========================
+   Navbar
+=========================== */
+
+.navbar {
+  position: fixed;
+
+  top: 20px;
+
+  left: 0;
+
+  width: 100%;
+
+  z-index: 1000;
+}
+
+.navbar__container {
+  height: 72px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border-radius: 999px;
+
+  background: rgba(24, 97, 122, 0.85);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   Logo
+=========================== */
+
+.navbar__brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.navbar__logo {
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: 2px solid white;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-weight: 700;
+
+  font-size: 18px;
+}
+
+.navbar__title {
+  font-size: 1.4rem;
+
+  font-weight: 700;
+}
+
+/* ===========================
+   Desktop Navigation
+=========================== */
+
+.navbar__desktop {
+  display: flex;
+}
+
+.navbar__menu {
+  display: flex;
+
+  align-items: center;
+
+  gap: 36px;
+
+  list-style: none;
+}
+
+.navbar__link {
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition: 0.25s;
+}
+
+.navbar__link:hover {
+  color: #d6f6ff;
+}
+
+/* ===========================
+   Toggle Button
+=========================== */
+
+.navbar__toggle {
+  display: none;
+
+  background: none;
+
+  border: none;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+/* ===========================
+   Mobile Menu
+=========================== */
+
+.navbar__mobile {
+  display: none;
+}
+
+/* ===========================
+   Laptop
+=========================== */
+
+@media (max-width: 1200px) {
+  .navbar__menu {
+    gap: 24px;
+  }
+
+  .navbar__link {
+    font-size: 14px;
+  }
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width: 992px) {
+  .navbar {
+    top: 10px;
+  }
+
+  .navbar__container {
+    height: 64px;
+  }
+
+  .navbar__desktop {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+  }
+
+  .navbar__mobile {
+    display: block;
+
+    margin: 12px auto 0;
+
+    width: calc(100% - 48px);
+
+    max-width: 720px;
+
+    border-radius: 20px;
+
+    background: rgba(24, 97, 122, 0.95);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar__mobile ul {
+    list-style: none;
+
+    padding: 20px;
+  }
+
+  .navbar__mobile li {
+    padding: 14px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar__mobile li:last-child {
+    border-bottom: none;
+  }
+
+  .navbar__mobile a {
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+  }
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width: 576px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .navbar__title {
+    font-size: 1.2rem;
+  }
+
+  .navbar__logo {
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 16px;
+  }
+}

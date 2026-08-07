@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, sans-serif;
+
+  background: #0f4458;
+
+  color: white;
+}
+
+.container {
+  width: 100%;
+
+  max-width: 1280px;
+
+  margin-inline: auto;
+
+  padding-inline: 24px;
+}
