@@ -126,10 +126,10 @@ export const AboutSection: React.FC = () => {
               </motion.div>
               <motion.div variants={cardVariants}>
                 <div className="text-3xl sm:text-4xl font-space font-bold text-[var(--accent-teal)]">
-                  ~90%
+                  99.9%
                 </div>
                 <div className="text-xs sm:text-sm text-[var(--text-muted)] font-medium mt-1">
-                  Test Coverage Achieved
+                  Service Uptime
                 </div>
               </motion.div>
             </motion.div>
