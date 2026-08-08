@@ -1,7 +1,184 @@
 @import "tailwindcss";
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: linear-gradient(135deg, #123f56, #1d5d72);
+@layer base {
+  :root {
+    --bg-primary: #0E3A4C;
+    --bg-navbar: #11475D;
+    --bg-card: #18475D;
+    --bg-badge-pill: #0C3C48;
+    --accent-teal: #2A7187;
+    --accent-teal-hover: #35839C;
+    --accent-cyan: #38BDF8;
+    --text-heading-light: #F4F1EA;
+    --text-heading-muted: #7C97A3;
+    --text-body: #9FB4BE;
+    --text-muted: #6E8792;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --star-particle: rgba(255, 255, 255, 0.55);
+  }
+
+  :root.light, [data-theme="light"] {
+    --bg-primary: #F0F4F8;
+    --bg-navbar: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-badge-pill: #E2E8F0;
+    --accent-teal: #1D5C6F;
+    --accent-teal-hover: #154553;
+    --accent-cyan: #0284C7;
+    --text-heading-light: #0F172A;
+    --text-heading-muted: #475569;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --border-subtle: rgba(15, 23, 42, 0.12);
+    --star-particle: rgba(15, 23, 42, 0.25);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-body);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Consistent Keyboard Focus Ring across all focusable elements */
+  *:focus-visible {
+    outline: 2px solid #38BDF8 !important;
+    outline-offset: 3px !important;
+    border-radius: 6px;
+  }
+}
+
+/* Print Media Query for Clean PDF & Resume Output */
+@media print {
+  @page {
+    margin: 1.2cm;
+    size: portrait;
+  }
+
+  /* Reset global background and text colors */
+  body {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.5 !important;
+    overflow: visible !important;
+  }
+
+  /* Hide non-resume and interactive elements */
+  nav,
+  header,
+  footer,
+  canvas,
+  button,
+  .no-print,
+  [data-theme-toggle],
+  .fixed,
+  .animate-pulse,
+  .animate-marquee {
+    display: none !important;
+  }
+
+  /* Ensure main container wraps cleanly */
+  main {
+    position: static !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Headings styling for print */
+  h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  p, span, li, div, td {
+    color: #334155 !important;
+  }
+
+  /* Section containers formatting */
+  section {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    border-top: 1px solid #e2e8f0 !important;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+  /* High contrast cards & containers for print */
+  .bg-\[\#18475D\],
+  .bg-\[\#0C3C48\],
+  .bg-\[\#216B85\],
+  .bg-\[\#11475D\],
+  .bg-\[\#18475D\]\/80 {
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
+  }
+
+  /* Ensure cards and list items don't break awkwardly across pages */
+  .grid > div,
+  .rounded-2xl,
+  .rounded-3xl,
+  article {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Highlight links */
+  a {
+    color: #0284c7 !important;
+    text-decoration: underline !important;
+  }
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0E3A4C;
+}
+::-webkit-scrollbar-thumb {
+  background: #18475D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2A7187;
 }
