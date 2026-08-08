@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 // Create an access key at https://web3forms.com with recipient Sayyed.vali@gmail.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+const WEB3FORMS_ACCESS_KEY = "d117c8a4-0929-4569-a257-4a0ef75bf466";
 
 export const ContactSection: FC = () => {
   const [formData, setFormData] = useState({
