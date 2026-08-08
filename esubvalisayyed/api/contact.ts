@@ -18,6 +18,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
+    console.error('RESEND_API_KEY is not set');
     return res.status(500).json({ error: 'Server is not configured to send email' });
   }
 
@@ -45,11 +46,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     if (error) {
+      console.error('Resend send error:', error);
       return res.status(500).json({ error: error.message });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
+    console.error('Unexpected error sending email:', err);
     return res.status(500).json({ error: 'Failed to send message' });
   }
 }
