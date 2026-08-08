@@ -30,6 +30,8 @@ npm run dev
 | Variable | Description |
 | -------- | ----------- |
 | `APP_URL` | Production URL, used for `og:url`/`og:image` meta tags. Falls back to `window.location.origin` when unset. |
+| `RESEND_API_KEY` | Required for the contact form (`api/contact`). Get one at resend.com |
+| `RESEND_FROM_EMAIL` | Verified sender address in Resend. Falls back to Resend's test sender |
 
 ## Deploy to Vercel
 

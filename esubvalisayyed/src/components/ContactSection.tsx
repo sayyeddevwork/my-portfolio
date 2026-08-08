@@ -39,6 +39,7 @@ export const ContactSection: FC = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = (e?: React.MouseEvent) => {
@@ -94,9 +95,10 @@ export const ContactSection: FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setTouched({ firstName: true, email: true, message: true });
+    setSendError(null);
 
     const validationErrors = validate();
     setErrors(validationErrors);
@@ -114,10 +116,25 @@ export const ContactSection: FC = () => {
     }
 
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       setSubmitted(true);
-    }, 800);
+    } catch {
+      setSendError(
+        "Something went wrong sending your message. Please try again or email Sayyed directly.",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleReset = () => {
@@ -131,6 +148,7 @@ export const ContactSection: FC = () => {
     setErrors({});
     setTouched({});
     setSubmitted(false);
+    setSendError(null);
   };
 
   return (
@@ -347,6 +365,15 @@ export const ContactSection: FC = () => {
                   </div>
 
                   <div className="pt-2">
+                    {sendError && (
+                      <p
+                        role="alert"
+                        className="flex items-start gap-2 text-xs text-rose-200 mb-3"
+                      >
+                        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                        {sendError}
+                      </p>
+                    )}
                     <button
                       type="submit"
                       disabled={loading}
