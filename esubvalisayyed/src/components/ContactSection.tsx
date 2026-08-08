@@ -16,6 +16,9 @@ import {
   Check,
 } from "lucide-react";
 
+// Create an access key at https://web3forms.com with recipient Sayyed.vali@gmail.com
+const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+
 export const ContactSection: FC = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -117,14 +120,19 @@ export const ContactSection: FC = () => {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New portfolio message from ${formData.firstName} ${formData.lastName}`,
+          ...formData,
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to send message");
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Failed to send message");
       }
 
       setSubmitted(true);
