@@ -421,7 +421,7 @@ export const ContactSection: FC = () => {
                         rel="noopener noreferrer"
                         className="text-sm font-semibold text-white hover:underline"
                       >
-                        +91-9966562620
+                        +91 99XXXXX620
                       </a>
                     </div>
                   </div>
