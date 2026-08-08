@@ -33,9 +33,10 @@ npm run dev
 
 ## Contact form
 
-The form posts to [Web3Forms](https://web3forms.com). Create an access key with recipient
-`Sayyed.vali@gmail.com` and paste it into `WEB3FORMS_ACCESS_KEY` in `src/components/ContactSection.tsx`.
-No domain verification or server required.
+The form posts to [Web3Forms](https://web3forms.com). Set the access key via the
+`VITE_WEB3FORMS_ACCESS_KEY` env var — in `.env.local` for local development and in
+Vercel (Project Settings → Environment Variables) for production. No domain
+verification or server required.
 
 ## Deploy to Vercel
 

@@ -17,7 +17,8 @@ import {
 } from "lucide-react";
 
 // Create an access key at https://web3forms.com with recipient Sayyed.vali@gmail.com
-const WEB3FORMS_ACCESS_KEY = "d117c8a4-0929-4569-a257-4a0ef75bf466";
+// Set VITE_WEB3FORMS_ACCESS_KEY in .env.local (see .env.example) and in Vercel env vars
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 export const ContactSection: FC = () => {
   const [formData, setFormData] = useState({
@@ -119,6 +120,11 @@ export const ContactSection: FC = () => {
     }
 
     setLoading(true);
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setLoading(false);
+      setSendError("Contact form is not configured yet.");
+      return;
+    }
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
