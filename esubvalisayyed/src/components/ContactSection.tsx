@@ -1,7 +1,6 @@
 import { FC, FormEvent, MouseEvent, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  Phone,
   Mail,
   MapPin,
   Send,
@@ -14,6 +13,7 @@ import {
   AlertCircle,
   Copy,
   Check,
+  MessageCircle,
 } from "lucide-react";
 
 // Create an access key at https://web3forms.com with recipient Sayyed.vali@gmail.com
@@ -409,17 +409,38 @@ export const ContactSection: FC = () => {
                 <div className="space-y-5">
                   <div className="flex items-center gap-3.5">
                     <div className="w-9 h-9 rounded-full bg-[#185368] border border-white/10 flex items-center justify-center text-white shrink-0">
-                      <Phone className="w-4 h-4" />
+                      <MessageCircle className="w-4 h-4" />
                     </div>
                     <div>
                       <span className="text-[10px] text-white/60 font-mono tracking-wider block uppercase">
-                        PHONE
+                        WHATSAPP
                       </span>
                       <a
-                        href="tel:+919966562620"
+                        href="https://wa.me/919966562620"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-sm font-semibold text-white hover:underline"
                       >
                         +91-9966562620
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-9 h-9 rounded-full bg-[#185368] border border-white/10 flex items-center justify-center text-white shrink-0">
+                      <Send className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-white/60 font-mono tracking-wider block uppercase">
+                        TELEGRAM
+                      </span>
+                      <a
+                        href="https://t.me/+919966562620"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:underline"
+                      >
+                        @SayyedVali
                       </a>
                     </div>
                   </div>
@@ -463,6 +484,42 @@ export const ContactSection: FC = () => {
                           )}
                         </button>
                       </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-9 h-9 rounded-full bg-[#185368] border border-white/10 flex items-center justify-center text-white shrink-0">
+                      <Linkedin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-white/60 font-mono tracking-wider block uppercase">
+                        LINKEDIN
+                      </span>
+                      <a
+                        href="https://www.linkedin.com/in/esub-vali-sayyed-516759100/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:underline"
+                      >
+                        esub-vali-sayyed
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-9 h-9 rounded-full bg-[#185368] border border-white/10 flex items-center justify-center text-white shrink-0">
+                      <Facebook className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] text-white/60 font-mono tracking-wider block uppercase">
+                        FACEBOOK
+                      </span>
+                      <a
+                        href="https://www.facebook.com/vali.syed.7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:underline"
+                      >
+                        vali.syed.7
+                      </a>
                     </div>
                   </div>
                 </div>
