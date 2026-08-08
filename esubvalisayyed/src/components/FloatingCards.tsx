@@ -5,7 +5,6 @@ import { Quote } from 'lucide-react';
 export const FloatingCards: React.FC = () => {
   return (
     <div className="absolute inset-0 pointer-events-none z-20 overflow-visible">
-      {/* Card 1: Lower-Left, -8deg base tilt */}
       <motion.div
         initial={{ opacity: 0, y: 30, rotate: -8 }}
         animate={{
@@ -26,25 +25,24 @@ export const FloatingCards: React.FC = () => {
             ease: 'easeInOut',
           },
         }}
-        className="absolute left-0 sm:-left-4 bottom-8 sm:bottom-12 w-[190px] sm:w-[210px] bg-[#18475D]/95 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-2xl shadow-black/50 pointer-events-auto transition-transform hover:scale-105"
+        className="absolute left-0 sm:-left-4 bottom-8 sm:bottom-12 w-[190px] sm:w-[210px] bg-[var(--bg-card)]/95 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-2xl shadow-black/50 pointer-events-auto transition-transform hover:scale-105"
       >
-        <div className="flex items-center gap-1 text-[#2A7187] mb-2">
+        <div className="flex items-center gap-1 text-[var(--accent-teal)] mb-2">
           <Quote className="w-3.5 h-3.5 fill-current opacity-80" />
         </div>
-        <p className="text-[#F4F1EA] text-xs sm:text-sm font-medium italic leading-snug">
+        <p className="text-[var(--text-heading-light)] text-xs sm:text-sm font-medium italic leading-snug">
           “Collaborating with Sayyed was smooth and efficient!”
         </p>
         <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-2">
-          <span className="text-[#6E8792] text-xs font-semibold tracking-wide">
+          <span className="text-[var(--text-muted)] text-xs font-semibold tracking-wide">
             — Sophia.m
           </span>
-          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#0C3C48] text-[#9FB4BE] font-mono">
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--bg-badge-pill)] text-[var(--text-body)] font-mono">
             Verified
           </span>
         </div>
       </motion.div>
 
-      {/* Card 2: Lower-Right, +8deg base tilt */}
       <motion.div
         initial={{ opacity: 0, y: 30, rotate: 8 }}
         animate={{
@@ -67,19 +65,19 @@ export const FloatingCards: React.FC = () => {
             delay: 1.5,
           },
         }}
-        className="absolute right-0 sm:-right-4 top-10 sm:top-14 w-[190px] sm:w-[210px] bg-[#18475D]/95 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-2xl shadow-black/50 pointer-events-auto transition-transform hover:scale-105"
+        className="absolute right-0 sm:-right-4 top-10 sm:top-14 w-[190px] sm:w-[210px] bg-[var(--bg-card)]/95 backdrop-blur-md border border-white/10 rounded-2xl px-5 py-4 shadow-2xl shadow-black/50 pointer-events-auto transition-transform hover:scale-105"
       >
-        <div className="flex items-center gap-1 text-[#35839C] mb-2">
+        <div className="flex items-center gap-1 text-[var(--accent-teal-hover)] mb-2">
           <Quote className="w-3.5 h-3.5 fill-current opacity-80" />
         </div>
-        <p className="text-[#F4F1EA] text-xs sm:text-sm font-medium italic leading-snug">
-          “Delivered scalable architecture and clean UI ahead of schedule.”
+        <p className="text-[var(--text-heading-light)] text-xs sm:text-sm font-medium italic leading-snug">
+          “Delivered scalable projects with clean, intuitive UIs ahead of schedule.”
         </p>
         <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-2">
-          <span className="text-[#6E8792] text-xs font-semibold tracking-wide">
+          <span className="text-[var(--text-muted)] text-xs font-semibold tracking-wide">
             — Marcus Vance
           </span>
-          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#0C3C48] text-[#9FB4BE] font-mono">
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--bg-badge-pill)] text-[var(--text-body)] font-mono">
             CTO
           </span>
         </div>

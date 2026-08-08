@@ -43,24 +43,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 pointer-events-none">
-      <div className="max-w-6xl mx-auto bg-[#184F64]/90 backdrop-blur-md border border-white/15 rounded-full px-5 md:px-7 py-2.5 md:py-3 flex items-center justify-between shadow-2xl shadow-black/40 pointer-events-auto">
+      <div className="max-w-6xl mx-auto bg-[var(--bg-navbar)]/90 backdrop-blur-md border border-[var(--border-subtle)] rounded-full px-5 md:px-7 py-2.5 md:py-3 flex items-center justify-between shadow-2xl shadow-black/40 pointer-events-auto">
         
-        {/* Left: Brand Logo */}
         <a
           href="#"
           id="nav-logo"
-          className="flex items-center gap-2.5 group rounded-full px-1.5 py-1 focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#184F64] focus-visible:outline-none"
+          className="flex items-center gap-2.5 group rounded-full px-1.5 py-1 focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-navbar)] focus-visible:outline-none"
           aria-label="Sayyed Vali Portfolio Home"
         >
-          <div className="w-7 h-7 rounded-full border-2 border-white/80 flex items-center justify-center text-white font-bold text-xs tracking-tighter group-hover:bg-white group-hover:text-[#184F64] transition-all shadow-sm">
+          <div className="w-7 h-7 rounded-full border-2 border-[var(--text-heading-light)] flex items-center justify-center text-[var(--text-heading-light)] font-bold text-xs tracking-tighter group-hover:bg-[var(--bg-badge-pill)] group-hover:text-[var(--accent-teal)] transition-all shadow-sm">
             S
           </div>
-          <span className="font-space font-semibold text-white text-base md:text-lg tracking-tight group-hover:text-[#F4F1EA] transition-colors">
+          <span className="font-space font-semibold text-[var(--text-heading-light)] text-base md:text-lg tracking-tight group-hover:text-[var(--text-heading-light)] transition-colors">
             Sayyed Vali
           </span>
         </a>
 
-        {/* Right: Desktop Links matching screenshot */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
@@ -69,15 +67,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
                 key={link.name}
                 href={link.href}
                 id={`nav-link-${link.id}`}
-                className={`transition-colors relative py-1 px-2 rounded-md text-white hover:text-white/90 focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#184F64] focus-visible:outline-none ${
-                  isActive ? 'font-semibold' : 'text-white/80 font-normal'
+                className={`transition-colors relative py-1 px-2 rounded-md text-[var(--text-heading-light)] hover:text-[var(--text-heading-light)]/90 focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-navbar)] focus-visible:outline-none ${
+                  isActive ? 'font-semibold' : 'text-[var(--text-heading-muted)] font-normal'
                 }`}
               >
                 {link.name}
                 {isActive && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-white rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--accent-teal)] rounded-full"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -85,30 +83,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
             );
           })}
 
-          {/* 'Get In Touch' as link in navbar list */}
           <button
             id="nav-cta-get-in-touch"
             onClick={onContactClick}
-            className={`transition-colors relative py-1 px-3 rounded-full text-white hover:text-white/90 font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#184F64] focus-visible:outline-none ${
-              activeSection === 'contact' ? 'font-semibold bg-white/10' : 'text-white/90 hover:bg-white/5'
+            className={`transition-colors relative py-1 px-3 rounded-full text-[var(--text-heading-light)] hover:text-[var(--text-heading-light)]/90 font-medium cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-navbar)] focus-visible:outline-none ${
+              activeSection === 'contact' ? 'font-semibold bg-[var(--bg-badge-pill)]' : 'text-[var(--text-heading-light)]/90 hover:bg-[var(--bg-badge-pill)]'
             }`}
           >
             Get In Touch
             {activeSection === 'contact' && (
               <motion.div
                 layoutId="activeNavIndicator"
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-white rounded-full"
+                className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--accent-teal)] rounded-full"
                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
               />
             )}
           </button>
         </nav>
 
-        {/* Mobile Toggle */}
         <button
           id="nav-mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10 active:scale-95 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#184F64] focus-visible:outline-none"
+          className="lg:hidden w-9 h-9 rounded-full border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-heading-light)] hover:bg-[var(--bg-badge-pill)] active:scale-95 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-navbar)] focus-visible:outline-none"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={mobileMenuOpen}
         >
@@ -122,7 +118,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -136,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
               scaleY: { duration: 0.2 }
             }}
             style={{ transformOrigin: 'top center' }}
-            className="lg:hidden mt-2 max-w-6xl mx-auto bg-[#184F64]/98 border border-white/15 rounded-3xl backdrop-blur-xl overflow-hidden p-6 shadow-2xl shadow-black/60 pointer-events-auto"
+            className="lg:hidden mt-2 max-w-6xl mx-auto bg-[var(--bg-navbar)]/98 border border-[var(--border-subtle)] rounded-3xl backdrop-blur-xl overflow-hidden p-6 shadow-2xl shadow-black/60 pointer-events-auto"
           >
             <motion.div
               initial="closed"
@@ -158,10 +153,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
                     closed: { opacity: 0, y: -8, x: -6 }
                   }}
                   transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                  className="text-base font-medium text-white/90 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 border-b border-white/10 last:border-none flex items-center justify-between transition-colors group focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#184F64] focus-visible:outline-none"
+                  className="text-base font-medium text-[var(--text-heading-light)]/90 hover:text-[var(--text-heading-light)] py-2.5 px-3 rounded-xl hover:bg-[var(--bg-badge-pill)] border-b border-[var(--border-subtle)] last:border-none flex items-center justify-between transition-colors group focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-navbar)] focus-visible:outline-none"
                 >
                   <span>{link.name}</span>
-                  <span className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all text-xs">→</span>
+                  <span className="text-[var(--text-body)] group-hover:text-[var(--text-heading-light)] group-hover:translate-x-1 transition-all text-xs">→</span>
                 </motion.a>
               ))}
               <motion.div
@@ -177,7 +172,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
                     setMobileMenuOpen(false);
                     onContactClick();
                   }}
-                  className="w-full rounded-full bg-white text-[#184F64] font-semibold py-3 text-center transition-all hover:bg-[#F4F1EA] hover:shadow-lg active:scale-[0.98] shadow-md text-sm cursor-pointer focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#184F64] focus-visible:outline-none"
+                  className="w-full rounded-full bg-[var(--accent-teal)] text-[var(--text-heading-light)] font-semibold py-3 text-center transition-all hover:bg-[var(--accent-teal-hover)] hover:shadow-lg active:scale-[0.98] shadow-md text-sm cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-navbar)] focus-visible:outline-none"
                 >
                   Get In Touch
                 </button>

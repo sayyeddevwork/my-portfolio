@@ -1,20 +1,40 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Sayyed Vali — Portfolio
 
-# Run and deploy your AI Studio app
+Senior Full Stack Engineer & Tech Lead portfolio. React + TypeScript + Vite + Tailwind CSS v4 + Three.js, with Motion animations and a light/dark theme.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/6404b41e-c17e-4fd2-9b46-423e9fbf95e6
+- Animated hero with a 3D WebGL visual (Three.js)
+- Projects, About (with career timeline), Tech Stack, Services, Education, Testimonials and Contact sections
+- Theme toggle (dark/light) with CSS-variable theming and accent color picker
+- SEO meta tags, Open Graph and JSON-LD structured data
 
-## Run Locally
+## Getting started
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+## Scripts
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+| Script       | Description                    |
+| ------------ | ------------------------------ |
+| `npm run dev`| Start the Vite dev server      |
+| `npm run build` | Production build            |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Type-check with `tsc --noEmit` |
+
+## Environment
+
+| Variable | Description |
+| -------- | ----------- |
+| `APP_URL` | Production URL, used for `og:url`/`og:image` meta tags. Falls back to `window.location.origin` when unset. |
+
+## Deploy to Vercel
+
+1. Push this repo to GitHub
+2. In Vercel: **Add New Project** → import the repo
+3. Framework preset: **Vite** (auto-detected)
+4. Leave build settings as defaults (`npm run build`, output `dist`)
+5. Optional: set the `APP_URL` environment variable to the production domain

@@ -17,7 +17,6 @@ export const ProjectsSection: React.FC = () => {
     <section id="projects" className="py-24 md:py-32 relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,17 +24,16 @@ export const ProjectsSection: React.FC = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0C3C48] border border-white/10 text-[#9FB4BE] text-sm font-medium uppercase tracking-wider mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#2A7187]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--bg-badge-pill)] border border-white/10 text-[var(--text-body)] text-sm font-medium uppercase tracking-wider mb-4">
+            <span className="w-2 h-2 rounded-full bg-[var(--accent-teal)]" />
             <span>Projects</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-space font-bold text-[#F4F1EA] max-w-2xl leading-tight">
+          <h2 className="text-4xl md:text-5xl font-space font-bold text-[var(--text-heading-light)] max-w-2xl leading-tight">
             Where Creativity Meets Meaningful Results
           </h2>
         </motion.div>
 
-        {/* Category Filter Tabs */}
         <div className="flex items-center justify-center gap-3 mb-12 flex-wrap" role="tablist" aria-label="Project categories">
           {categories.map((cat) => (
             <button
@@ -44,10 +42,10 @@ export const ProjectsSection: React.FC = () => {
               role="tab"
               aria-selected={selectedCategory === cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0E3A4C] focus-visible:outline-none ${
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] focus-visible:outline-none ${
                 selectedCategory === cat
-                  ? 'bg-[#2A7187] text-[#F4F1EA] shadow-md shadow-black/20 font-semibold'
-                  : 'bg-[#18475D]/60 hover:bg-[#18475D] text-[#9FB4BE] hover:text-[#F4F1EA] border border-white/5'
+                  ? 'bg-[var(--accent-teal)] text-[var(--text-heading-light)] shadow-md shadow-black/20 font-semibold'
+                  : 'bg-[var(--bg-card)]/60 hover:bg-[var(--bg-card)] text-[var(--text-body)] hover:text-[var(--text-heading-light)] border border-white/5'
               }`}
             >
               {cat}
@@ -55,7 +53,6 @@ export const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
         <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -69,41 +66,37 @@ export const ProjectsSection: React.FC = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-[#18475D] rounded-2xl border border-white/10 overflow-hidden shadow-xl shadow-black/30 hover:-translate-y-2 hover:border-[#2A7187] hover:shadow-2xl hover:shadow-[#2A7187]/10 transition-all duration-300 flex flex-col justify-between"
+                className="group bg-[var(--bg-card)] rounded-2xl border border-white/10 overflow-hidden shadow-xl shadow-black/30 hover:-translate-y-2 hover:border-[var(--accent-teal)] hover:shadow-2xl hover:shadow-[var(--accent-teal)]/10 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Image Thumbnail */}
                 <div>
-                  <div className="relative aspect-video w-full overflow-hidden bg-[#0E3A4C]">
+                  <div className="relative aspect-video w-full overflow-hidden bg-[var(--bg-primary)]">
                     <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#18475D] via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-60" />
                     
-                    {/* Category Badge */}
-                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#0C3C48]/90 backdrop-blur-md text-[#F4F1EA] text-xs font-mono border border-white/10">
+                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[var(--bg-badge-pill)]/90 backdrop-blur-md text-[var(--text-heading-light)] text-xs font-mono border border-white/10">
                       {project.category}
                     </span>
                   </div>
 
-                  {/* Card Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold font-space text-[#F4F1EA] group-hover:text-[#35839C] transition-colors mb-2">
+                    <h3 className="text-xl font-bold font-space text-[var(--text-heading-light)] group-hover:text-[var(--accent-teal-hover)] transition-colors mb-2">
                       {project.title}
                     </h3>
                     
-                    <p className="text-sm text-[#9FB4BE] line-clamp-2 leading-relaxed mb-4">
+                    <p className="text-sm text-[var(--text-body)] line-clamp-2 leading-relaxed mb-4">
                       {project.description}
                     </p>
 
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2.5 py-1 rounded-md bg-[#0C3C48] text-[#9FB4BE] text-xs font-medium border border-white/5"
+                          className="px-2.5 py-1 rounded-md bg-[var(--bg-badge-pill)] text-[var(--text-body)] text-xs font-medium border border-white/5"
                         >
                           {tag}
                         </span>
@@ -112,10 +105,9 @@ export const ProjectsSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Card Footer Actions */}
                 <div className="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between mt-auto">
-                  <span className="text-xs text-[#6E8792] font-mono flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-[#2A7187]" />
+                  <span className="text-xs text-[var(--text-muted)] font-mono flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-[var(--accent-teal)]" />
                     Featured Work
                   </span>
 
@@ -125,7 +117,7 @@ export const ProjectsSection: React.FC = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-8 h-8 rounded-full bg-[#0C3C48] flex items-center justify-center text-[#9FB4BE] hover:text-[#F4F1EA] hover:bg-[#2A7187] transition-all focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#18475D] focus-visible:outline-none"
+                        className="w-8 h-8 rounded-full bg-[var(--bg-badge-pill)] flex items-center justify-center text-[var(--text-body)] hover:text-[var(--text-heading-light)] hover:bg-[var(--accent-teal)] transition-all focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-card)] focus-visible:outline-none"
                         aria-label={`View ${project.title} source code on Github`}
                       >
                         <Github className="w-4 h-4" />
@@ -136,7 +128,7 @@ export const ProjectsSection: React.FC = () => {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="w-8 h-8 rounded-full bg-[#2A7187] flex items-center justify-center text-[#F4F1EA] hover:bg-[#35839C] transition-all focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#18475D] focus-visible:outline-none"
+                        className="w-8 h-8 rounded-full bg-[var(--accent-teal)] flex items-center justify-center text-[var(--text-heading-light)] hover:bg-[var(--accent-teal-hover)] transition-all focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-card)] focus-visible:outline-none"
                         aria-label={`Open live demo for ${project.title}`}
                       >
                         <ExternalLink className="w-4 h-4" />

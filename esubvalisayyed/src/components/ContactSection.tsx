@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, Facebook, Twitter, Linkedin, Instagram, Github, AlertCircle, Copy, Check } from 'lucide-react';
+import { FC, FormEvent, MouseEvent, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  CheckCircle2,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Instagram,
+  Github,
+  AlertCircle,
+  Copy,
+  Check,
+} from "lucide-react";
 
-export const ContactSection: React.FC = () => {
+export const ContactSection: FC = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState<{
@@ -29,7 +43,7 @@ export const ContactSection: React.FC = () => {
 
   const handleCopyEmail = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
-    navigator.clipboard.writeText('Sayyed.vali@gmail.com');
+    navigator.clipboard.writeText("Sayyed.vali@gmail.com");
     setCopiedEmail(true);
     setTimeout(() => {
       setCopiedEmail(false);
@@ -42,28 +56,30 @@ export const ContactSection: React.FC = () => {
   };
 
   const validate = (data = formData) => {
-    const newErrors: { firstName?: string; email?: string; message?: string } = {};
+    const newErrors: { firstName?: string; email?: string; message?: string } =
+      {};
 
     if (!data.firstName.trim()) {
-      newErrors.firstName = 'First name is required.';
+      newErrors.firstName = "First name is required.";
     }
 
     if (!data.email.trim()) {
-      newErrors.email = 'Email address is required.';
+      newErrors.email = "Email address is required.";
     } else if (!validateEmail(data.email.trim())) {
-      newErrors.email = 'Please enter a valid email address (e.g. name@example.com).';
+      newErrors.email =
+        "Please enter a valid email address (e.g. name@example.com).";
     }
 
     if (!data.message.trim()) {
-      newErrors.message = 'Message is required.';
+      newErrors.message = "Message is required.";
     } else if (data.message.trim().length < 10) {
-      newErrors.message = 'Message should be at least 10 characters long.';
+      newErrors.message = "Message should be at least 10 characters long.";
     }
 
     return newErrors;
   };
 
-  const handleBlur = (field: 'firstName' | 'email' | 'message') => {
+  const handleBlur = (field: "firstName" | "email" | "message") => {
     setTouched((prev) => ({ ...prev, [field]: true }));
     const validationErrors = validate();
     setErrors(validationErrors);
@@ -88,11 +104,11 @@ export const ContactSection: React.FC = () => {
     if (Object.keys(validationErrors).length > 0) {
       // Focus first invalid field
       if (validationErrors.firstName) {
-        document.getElementById('contact-first-name')?.focus();
+        document.getElementById("contact-first-name")?.focus();
       } else if (validationErrors.email) {
-        document.getElementById('contact-email')?.focus();
+        document.getElementById("contact-email")?.focus();
       } else if (validationErrors.message) {
-        document.getElementById('contact-message')?.focus();
+        document.getElementById("contact-message")?.focus();
       }
       return;
     }
@@ -106,11 +122,11 @@ export const ContactSection: React.FC = () => {
 
   const handleReset = () => {
     setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      company: '',
-      message: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      company: "",
+      message: "",
     });
     setErrors({});
     setTouched({});
@@ -120,8 +136,6 @@ export const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="py-20 md:py-28 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
-        
-        {/* Centered Header matching screenshot */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -137,7 +151,6 @@ export const ContactSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Outer Medium Teal Card */}
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -146,8 +159,6 @@ export const ContactSection: React.FC = () => {
           className="bg-[#216B85] rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/10"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-            
-            {/* Left Side: Form (7 or 8 columns) */}
             <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-between pr-0 lg:pr-4">
               {submitted ? (
                 <motion.div
@@ -162,7 +173,8 @@ export const ContactSection: React.FC = () => {
                     Message Sent!
                   </h3>
                   <p className="text-sm text-white/80 max-w-md mb-8">
-                    Thank you for reaching out, {formData.firstName}. Sayyed will review your inquiry and get back to you shortly.
+                    Thank you for reaching out, {formData.firstName}. Sayyed
+                    will review your inquiry and get back to you shortly.
                   </p>
                   <button
                     onClick={handleReset}
@@ -172,25 +184,37 @@ export const ContactSection: React.FC = () => {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6 md:gap-8 justify-between h-full">
-                  
+                <form
+                  onSubmit={handleSubmit}
+                  noValidate
+                  className="flex flex-col gap-6 md:gap-8 justify-between h-full"
+                >
                   <div className="space-y-6 md:space-y-8">
-                    {/* Row 1: First Name & Last Name */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                       <div>
-                        <label htmlFor="contact-first-name" className="sr-only">First Name</label>
+                        <label htmlFor="contact-first-name" className="sr-only">
+                          First Name
+                        </label>
                         <input
                           id="contact-first-name"
                           type="text"
                           value={formData.firstName}
-                          onChange={(e) => handleChange('firstName', e.target.value)}
-                          onBlur={() => handleBlur('firstName')}
+                          onChange={(e) =>
+                            handleChange("firstName", e.target.value)
+                          }
+                          onBlur={() => handleBlur("firstName")}
                           placeholder="First name *"
-                          aria-invalid={!!(touched.firstName && errors.firstName)}
-                          aria-describedby={errors.firstName ? "first-name-error" : undefined}
+                          aria-invalid={
+                            !!(touched.firstName && errors.firstName)
+                          }
+                          aria-describedby={
+                            errors.firstName ? "first-name-error" : undefined
+                          }
                           className={`w-full bg-transparent border-b ${
-                            touched.firstName && errors.firstName ? 'border-rose-300' : 'border-white/40'
-                          } focus:border-white focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70`}
+                            touched.firstName && errors.firstName
+                              ? "border-rose-300"
+                              : "border-white/40"
+                          } focus:border-white focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70`}
                         />
                         <AnimatePresence>
                           {touched.firstName && errors.firstName && (
@@ -209,34 +233,45 @@ export const ContactSection: React.FC = () => {
                       </div>
 
                       <div>
-                        <label htmlFor="contact-last-name" className="sr-only">Last Name</label>
+                        <label htmlFor="contact-last-name" className="sr-only">
+                          Last Name
+                        </label>
                         <input
                           id="contact-last-name"
                           type="text"
                           value={formData.lastName}
-                          onChange={(e) => handleChange('lastName', e.target.value)}
+                          onChange={(e) =>
+                            handleChange("lastName", e.target.value)
+                          }
                           placeholder="Last name"
-                          className="w-full bg-transparent border-b border-white/40 focus:border-white focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70"
+                          className="w-full bg-transparent border-b border-white/40 focus:border-white focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70"
                         />
                       </div>
                     </div>
 
-                    {/* Row 2: Email & Company Name */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                       <div>
-                        <label htmlFor="contact-email" className="sr-only">Email Address</label>
+                        <label htmlFor="contact-email" className="sr-only">
+                          Email Address
+                        </label>
                         <input
                           id="contact-email"
                           type="email"
                           value={formData.email}
-                          onChange={(e) => handleChange('email', e.target.value)}
-                          onBlur={() => handleBlur('email')}
+                          onChange={(e) =>
+                            handleChange("email", e.target.value)
+                          }
+                          onBlur={() => handleBlur("email")}
                           placeholder="Email *"
                           aria-invalid={!!(touched.email && errors.email)}
-                          aria-describedby={errors.email ? "email-error" : undefined}
+                          aria-describedby={
+                            errors.email ? "email-error" : undefined
+                          }
                           className={`w-full bg-transparent border-b ${
-                            touched.email && errors.email ? 'border-rose-300' : 'border-white/40'
-                          } focus:border-white focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70`}
+                            touched.email && errors.email
+                              ? "border-rose-300"
+                              : "border-white/40"
+                          } focus:border-white focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70`}
                         />
                         <AnimatePresence>
                           {touched.email && errors.email && (
@@ -255,33 +290,44 @@ export const ContactSection: React.FC = () => {
                       </div>
 
                       <div>
-                        <label htmlFor="contact-company" className="sr-only">Company Name</label>
+                        <label htmlFor="contact-company" className="sr-only">
+                          Company Name
+                        </label>
                         <input
                           id="contact-company"
                           type="text"
                           value={formData.company}
-                          onChange={(e) => handleChange('company', e.target.value)}
+                          onChange={(e) =>
+                            handleChange("company", e.target.value)
+                          }
                           placeholder="Company Name"
-                          className="w-full bg-transparent border-b border-white/40 focus:border-white focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70"
+                          className="w-full bg-transparent border-b border-white/40 focus:border-white focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70"
                         />
                       </div>
                     </div>
 
-                    {/* Row 3: Message */}
                     <div>
-                      <label htmlFor="contact-message" className="sr-only">Your Message</label>
+                      <label htmlFor="contact-message" className="sr-only">
+                        Your Message
+                      </label>
                       <textarea
                         id="contact-message"
                         rows={3}
                         value={formData.message}
-                        onChange={(e) => handleChange('message', e.target.value)}
-                        onBlur={() => handleBlur('message')}
+                        onChange={(e) =>
+                          handleChange("message", e.target.value)
+                        }
+                        onBlur={() => handleBlur("message")}
                         placeholder="Message *"
                         aria-invalid={!!(touched.message && errors.message)}
-                        aria-describedby={errors.message ? "message-error" : undefined}
+                        aria-describedby={
+                          errors.message ? "message-error" : undefined
+                        }
                         className={`w-full bg-transparent border-b ${
-                          touched.message && errors.message ? 'border-rose-300' : 'border-white/40'
-                        } focus:border-white focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70 resize-none`}
+                          touched.message && errors.message
+                            ? "border-rose-300"
+                            : "border-white/40"
+                        } focus:border-white focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none rounded-sm text-white py-2 text-sm md:text-base transition-colors placeholder:text-white/70 resize-none`}
                       />
                       <AnimatePresence>
                         {touched.message && errors.message && (
@@ -300,31 +346,26 @@ export const ContactSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Submit Button Pill */}
                   <div className="pt-2">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="rounded-full bg-[#113C4D] hover:bg-[#0D2F3C] text-white font-semibold text-sm px-8 py-3 transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none"
+                      className="rounded-full bg-[#113C4D] hover:bg-[#0D2F3C] text-white font-semibold text-sm px-8 py-3 transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#216B85] focus-visible:outline-none"
                     >
-                      {loading ? 'Sending...' : 'Submit'}
+                      {loading ? "Sending..." : "Submit"}
                     </button>
                   </div>
-
                 </form>
               )}
             </div>
 
-            {/* Right Side: Dark Info Box */}
             <div className="lg:col-span-5 xl:col-span-5 bg-[#134455] rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 min-h-[320px]">
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-6 leading-snug">
                   Hello, We are always here to help you.
                 </h3>
 
-                {/* Info List */}
                 <div className="space-y-5">
-                  {/* Phone */}
                   <div className="flex items-center gap-3.5">
                     <div className="w-9 h-9 rounded-full bg-[#185368] border border-white/10 flex items-center justify-center text-white shrink-0">
                       <Phone className="w-4 h-4" />
@@ -333,13 +374,15 @@ export const ContactSection: React.FC = () => {
                       <span className="text-[10px] text-white/60 font-mono tracking-wider block uppercase">
                         PHONE
                       </span>
-                      <a href="tel:+919966562620" className="text-sm font-semibold text-white hover:underline">
+                      <a
+                        href="tel:+919966562620"
+                        className="text-sm font-semibold text-white hover:underline"
+                      >
                         +91-9966562620
                       </a>
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div className="flex items-center gap-3.5">
                     <div className="w-9 h-9 rounded-full bg-[#185368] border border-white/10 flex items-center justify-center text-white shrink-0">
                       <Mail className="w-4 h-4" />
@@ -363,7 +406,7 @@ export const ContactSection: React.FC = () => {
                           )}
                         </AnimatePresence>
                       </div>
-                      
+
                       <div className="flex items-center gap-2 group mt-0.5">
                         <button
                           type="button"
@@ -384,7 +427,6 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Social Icons at Bottom */}
               <div className="pt-6 mt-6 border-t border-white/10">
                 <span className="text-[10px] text-white/60 font-mono tracking-wider block uppercase mb-3">
                   CONTACT WITH US
@@ -392,7 +434,7 @@ export const ContactSection: React.FC = () => {
                 <div className="flex items-center gap-2.5">
                   <a
                     href="mailto:Sayyed.vali@gmail.com"
-                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
+                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
                     aria-label="Email Sayyed"
                   >
                     <Mail className="w-3.5 h-3.5" />
@@ -401,7 +443,7 @@ export const ContactSection: React.FC = () => {
                     href="https://github.com/sanasham"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
+                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
                     aria-label="GitHub Profile"
                   >
                     <Github className="w-3.5 h-3.5" />
@@ -410,26 +452,23 @@ export const ContactSection: React.FC = () => {
                     href="https://linkedin.com/in/esub-vali-sayyed-516759100"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
+                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
                     aria-label="LinkedIn Profile"
                   >
                     <Linkedin className="w-3.5 h-3.5" />
                   </a>
                   <a
                     href="#"
-                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[#38BDF8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
+                    className="w-8 h-8 rounded-full bg-[#185368] hover:bg-white hover:text-[#134455] text-white border border-white/15 flex items-center justify-center transition-all text-xs focus-visible:ring-2 focus-visible:ring-[var(--accent-cyan)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#134455] focus-visible:outline-none"
                     aria-label="Instagram Profile"
                   >
                     <Instagram className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
-
             </div>
-
           </div>
         </motion.div>
-
       </div>
     </section>
   );

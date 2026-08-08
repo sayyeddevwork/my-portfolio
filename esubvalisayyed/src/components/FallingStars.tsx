@@ -23,7 +23,6 @@ export const FallingStars: React.FC = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Particle density: ~50 particles per viewport
     const particleCount = Math.floor((width * height) / 25000) || 50;
     const particles: Particle[] = [];
 

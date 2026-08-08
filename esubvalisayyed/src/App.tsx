@@ -23,20 +23,15 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0E3A4C] text-[#9FB4BE] relative font-inter overflow-x-hidden">
-      {/* Global Page Transition & Loading Screen */}
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-body)] relative font-inter overflow-x-hidden">
       <LoadingScreen />
 
-      {/* Dynamic Meta & SEO Head configuration */}
       <SEO />
 
-      {/* Global Background: Continuous Slow-Falling Star Particles */}
       <FallingStars />
 
-      {/* Sticky Glassmorphism Navbar */}
       <Navbar onContactClick={handleScrollToContact} />
 
-      {/* Main Sections */}
       <main className="relative z-10">
         <HeroSection onContactClick={handleScrollToContact} />
         <ProjectsSection />
@@ -48,10 +43,8 @@ export default function App() {
         <ContactSection />
       </main>
 
-      {/* Footer */}
       <Footer />
 
-      {/* Floating Utilities (Scroll-To-Top & Theme Palette Picker) */}
       <FloatingUtilities />
     </div>
   );
