@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sayyed Vali | Senior Full-Stack Engineer & Technical Lead</title>
+    <meta name="description" content="Senior Full-Stack Engineer and Technical Lead specializing in microservices architecture, React, Node.js, TypeScript, Kafka event streaming, CIAM identity security, and cloud infrastructure." />
+    <meta name="author" content="Sayyed Vali" />
+    <link rel="canonical" href="https://sanasham.github.io/" />
+    <meta name="theme-color" content="#020617" />
+
+    <!-- Apply theme before first paint to avoid flash of wrong theme -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          if (stored === 'light' || (!stored && prefersLight)) {
+            document.documentElement.classList.add('light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sanasham.github.io/" />
+    <meta property="og:site_name" content="Sayyed Vali — Engineering Portfolio" />
+    <meta property="og:title" content="Sayyed Vali | Senior Full-Stack Engineer & Technical Lead" />
+    <meta property="og:description" content="Senior Full-Stack Engineer & Technical Lead — React, Node.js, TypeScript, microservices, CIAM security, and cloud architecture. Project write-ups, architecture model, and resume." />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Sayyed Vali | Senior Full-Stack Engineer & Technical Lead" />
+    <meta name="twitter:description" content="Senior Full-Stack Engineer & Technical Lead — React, Node.js, TypeScript, microservices, CIAM security, and cloud architecture." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='65%' font-family='sans-serif' font-weight='bold' font-size='50' fill='white' text-anchor='middle'>SV</text></svg>" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono (non-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
+
+    <!-- Structured Data: Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sayyed Vali",
+      "jobTitle": "Senior Full-Stack Engineer & Technical Lead",
+      "url": "https://sanasham.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/esub-vali-sayyed-516759100",
+        "https://github.com/sanasham"
+      ],
+      "knowsAbout": [
+        "React",
+        "Node.js",
+        "TypeScript",
+        "Microservices",
+        "Apache Kafka",
+        "OAuth 2.0",
+        "CIAM",
+        "Azure",
+        "Kubernetes"
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-sans selection:bg-blue-600 selection:text-white antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
